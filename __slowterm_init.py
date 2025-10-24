@@ -18,7 +18,15 @@ while True:
             with open("std.out", "w") as f:
                 shell.stdin.write(new_bash + '\n')
                 shell.stdin.flush()
-                f.write(shell.stdout.read().strip())
+                output = []
+                while True:
+                    line = (shell.stdout.readline().strip())
+                    if not line:
+                        break
+
+                    output.append(line)
+                f.write("".join(output))
+
             os.system("git pull && git add . && git commit -m output && git push")
             old_bash = new_bash
 
