@@ -1,1 +1,1 @@
-ls -rumom
+ls -la
