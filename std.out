@@ -1,10 +1,10 @@
 total 32
-drwxrwxrwx+ 3 vscode root   4096 Oct 24 23:48 .
+drwxrwxrwx+ 3 vscode root   4096 Oct 24 23:49 .
 drwxr-xrwx+ 4 vscode root   4096 Oct 24 23:44 ..
-drwxrwxrwx+ 7 vscode root   4096 Oct 24 23:48 .git
+drwxrwxrwx+ 7 vscode root   4096 Oct 24 23:49 .git
 -rw-rw-rw-  1 vscode root   1062 Oct 24 23:44 LICENSE
 -rw-rw-rw-  1 vscode vscode   68 Oct 24 23:48 README.md
--rw-rw-rw-  1 vscode root   1008 Oct 24 23:44 __slowterm_init.py
+-rw-rw-rw-  1 vscode vscode  722 Oct 24 23:49 client.py
 -rw-rw-rw-  1 vscode root      6 Oct 24 23:44 run.bash
--rw-rw-rw-  1 vscode root    722 Oct 24 23:44 slowterm.py
--rw-rw-rw-  1 vscode root      0 Oct 24 23:48 std.out
+-rw-rw-rw-  1 vscode vscode 1008 Oct 24 23:49 server.py
+-rw-rw-rw-  1 vscode root      0 Oct 24 23:49 std.out
