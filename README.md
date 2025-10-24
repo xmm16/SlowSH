@@ -1,2 +1,2 @@
 # slowterm
-a slow ssh alternative limited to 5000 commands per hour
+a slow ssh alternative limited to 1250 commands per hour
