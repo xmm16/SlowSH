@@ -12,7 +12,6 @@ while True:
 
     if not first_time:
         os.system("cat std.out")
-        print('\n')
 
     with open("run.bash", 'w') as f:
         f.write(input("<slow>> ").strip())
