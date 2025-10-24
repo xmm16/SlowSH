@@ -1,1 +1,1 @@
-ls -la
+cat __slowterm_init.py
