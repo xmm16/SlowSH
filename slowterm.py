@@ -16,7 +16,9 @@ while True:
 
     git_commands = ("git add . && git commit -m input && git push")
     subprocess.run(git_commands, shell=True, text=True, capture_output=True)
-    time.sleep(5)
+    
+    while subprocess.run("git fetch --dry-run", text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True).stdout == '':
+        time.sleep(1)
 
     if first_time:
         first_time = False
