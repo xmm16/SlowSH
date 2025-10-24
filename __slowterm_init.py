@@ -12,8 +12,10 @@ while True:
         with open("run.bash", "r") as f:
             new_bash = f.read()
 
+        print(old_bash)
+        print(new_bash)
         if old_bash != new_bash:
-            print("executing")
+
             with open("std.out", "w") as f:
                 shell.stdin.write(new_bash + '\n')
                 shell.stdin.flush()
