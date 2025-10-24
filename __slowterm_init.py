@@ -8,7 +8,7 @@ with open("run.bash", 'r') as f:
 shell = subprocess.Popen("/bin/bash", stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
 
 while True:
-    if subprocess.run("git fetch --dry-run", text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True).stdout == 'r':
+    if subprocess.run("git fetch --dry-run", text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True).stdout != '':
         with open("run.bash", "r") as f:
             new_bash = f.read()
 
