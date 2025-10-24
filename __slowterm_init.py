@@ -2,6 +2,8 @@ import os
 import subprocess
 import time
 
+os.system("git pull && git add . && git commit -m init && git push")
+
 with open("run.bash", 'r') as f:
     old_bash = f.read()
 
