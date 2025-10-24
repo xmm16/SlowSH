@@ -14,18 +14,19 @@ while True:
             new_bash = f.read()
 
         if old_bash != new_bash:
-            print("got here")
-            with open("std.out", "w") as f:
-                shell.stdin.write(new_bash + '\n')
-                shell.stdin.flush()
-                output = []
-                while True:
-                    line = (shell.stdout.readline().strip())
-                    if not line:
-                        break
+            with open("std.out", 'r') as f:
+                old_out = f.read()
 
-                    output.append(line)
-                f.write("".join(output))
+            shell.stdin.write(new_bash + ' > std.out \n')
+            shell.stdin.flush()
+            while True:
+                with open("std.out", 'r') as f:
+                    new_out = f.read()
+
+                if old_out == new_out:
+                    break
+                    
+                time.sleep(1)
 
             os.system("git pull && git add . && git commit -m output && git push")
             old_bash = new_bash
