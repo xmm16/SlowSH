@@ -11,4 +11,4 @@ while True:
 
     git_commands = ("git add . && git commit -m input && git push")
     subprocess.run(git_commands, shell=True, text=True, capture_output=True)
-    time.sleep(1)
+    time.sleep(5)
