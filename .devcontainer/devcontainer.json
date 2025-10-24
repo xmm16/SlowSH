@@ -1,7 +1,16 @@
 {
   "name": "gitterm",
   "image": "mcr.microsoft.com/devcontainers/python:3",
-  "forwardPorts": [],
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installCurl": true,
+      "installWget": true
+    }
+  },
   "postCreateCommand": "python3 __slowterm_init.py",
   "customizations": {
     "vscode": {
