@@ -1,11 +1,32 @@
-total 36
-drwxr-xr-x  4 eshnd eshnd 4096 Oct 24 18:28 .
-drwxr-xr-x 68 eshnd eshnd 4096 Oct 24 17:33 ..
-drwxr-xr-x  2 eshnd eshnd 4096 Oct 24 17:33 .devcontainer
-drwxr-xr-x  7 eshnd eshnd 4096 Oct 24 18:28 .git
--rw-r--r--  1 eshnd eshnd 1062 Oct 24 17:33 LICENSE
--rw-r--r--  1 eshnd eshnd   68 Oct 24 17:33 README.md
--rw-r--r--  1 eshnd eshnd    6 Oct 24 18:28 run.bash
--rw-r--r--  1 eshnd eshnd 1008 Oct 24 18:25 __slowterm_init.py
--rw-r--r--  1 eshnd eshnd  722 Oct 24 18:27 slowterm.py
--rw-r--r--  1 eshnd eshnd    0 Oct 24 18:28 std.out
+import os
+import subprocess
+import time
+
+os.system("git pull && git add . && git commit -m init && git push")
+
+shell = subprocess.Popen("/bin/bash", stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+
+while True:
+    if subprocess.run("git fetch --dry-run", text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True).stdout != '':
+        os.system("git pull")
+        with open("run.bash", 'r') as f:
+            new_bash = f.read()
+
+        if new_bash:
+            with open("std.out", 'r') as f:
+                old_out = f.read()
+
+            shell.stdin.write(new_bash + ' > std.out 2>&1\n')
+            shell.stdin.flush()
+            while True:
+                with open("std.out", 'r') as f:
+                    new_out = f.read()
+
+                if old_out == new_out:
+                    break
+                    
+                time.sleep(1)
+
+            os.system("git pull && git add . && git commit -m output && git push")
+
+    time.sleep(1)
