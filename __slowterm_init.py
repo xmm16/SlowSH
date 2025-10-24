@@ -2,7 +2,10 @@ import os
 import subprocess
 import time
 
-old_bash = ""
+with open("run.bash", 'r') as f:
+    old_bash = f.read()
+
+shell = subprocess.Popen("/bin/bash", stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
 
 while True:
     if subprocess.run("git fetch --dry-run", text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True).stdout == 'r':
@@ -11,7 +14,9 @@ while True:
 
         if old_bash != new_bash:
             with open("std.out", "w") as f:
-                f.write(subprocess.run("bash run.bash", text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True).stdout)
-            os.system("git pull && git add . && git commit -m refresh && git push")
+                shell.stdin.write(new_bash + '\n')
+                shell.stdin.flush()
+                f.write(shell.stdout.readline().strip())
+            os.system("git pull && git add . && git commit -m output && git push")
 
     time.sleep(1)
