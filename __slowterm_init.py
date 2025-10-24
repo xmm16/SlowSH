@@ -4,9 +4,6 @@ import time
 
 os.system("git pull && git add . && git commit -m init && git push")
 
-with open("run.bash", 'r') as f:
-    old_bash = f.read()
-
 shell = subprocess.Popen("/bin/bash", stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
 
 while True:
@@ -15,7 +12,7 @@ while True:
         with open("run.bash", 'r') as f:
             new_bash = f.read()
 
-        if old_bash != new_bash:
+        if new_bash:
             with open("std.out", 'r') as f:
                 old_out = f.read()
 
@@ -31,6 +28,5 @@ while True:
                 time.sleep(1)
 
             os.system("git pull && git add . && git commit -m output && git push")
-            old_bash = new_bash
 
     time.sleep(1)
