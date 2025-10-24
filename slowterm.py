@@ -2,6 +2,8 @@ import os
 import subprocess
 import time
 
+os.system("git pull && git add . && git commit -m init && git push")
+
 first_time = True
 
 while True:
