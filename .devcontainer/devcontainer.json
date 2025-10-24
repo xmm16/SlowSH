@@ -1,0 +1,12 @@
+{
+  "name": "gitterm",
+  "image": "mcr.microsoft.com/devcontainers/python:3",
+  "forwardPorts": [],
+  "postCreateCommand": "python3 __slowterm_init.py",
+  "customizations": {
+    "vscode": {
+      "extensions": []
+    }
+  }
+}
+
