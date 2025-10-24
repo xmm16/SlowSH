@@ -2,7 +2,13 @@ import os
 import subprocess
 import time
 
+first_time = True
+
 while True:
+    if not first_time:
+        os.system("cat std.out")
+        print('\n')
+
     subprocess.run("git pull", shell=True, text=True, capture_output=True)
 
     with open("run.bash", 'w') as f:
@@ -11,5 +17,6 @@ while True:
     git_commands = ("git add . && git commit -m input && git push")
     subprocess.run(git_commands, shell=True, text=True, capture_output=True)
     time.sleep(5)
-    os.system("cat std.out")
-    print('\n')
+
+    if first_time:
+        first_time = False
