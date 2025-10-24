@@ -1,1 +1,1 @@
-ls -lahk
+ls -lah
