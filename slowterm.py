@@ -2,8 +2,6 @@ import os
 import subprocess
 import time
 
-os.system("cat std.out")
-
 while True:
     subprocess.run("git pull", shell=True, text=True, capture_output=True)
 
