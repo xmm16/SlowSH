@@ -2,7 +2,7 @@ import os
 import subprocess
 
 while True:
-    os.system("git pull")
+    subprocess.run("git pull", shell=True, text=True, capture_output=True)
     os.system("cat std.out")
 
     with open("run.bash", 'w') as f:
