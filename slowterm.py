@@ -12,3 +12,4 @@ while True:
     subprocess.run(git_commands, shell=True, text=True, capture_output=True)
     time.sleep(5)
     os.system("cat std.out")
+    print('\n')
