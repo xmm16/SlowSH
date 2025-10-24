@@ -16,7 +16,7 @@ while True:
             with open("std.out", 'r') as f:
                 old_out = f.read()
 
-            shell.stdin.write(new_bash + ' > std.out \n')
+            shell.stdin.write(new_bash + ' > std.out 2>&1\n')
             shell.stdin.flush()
             while True:
                 with open("std.out", 'r') as f:
