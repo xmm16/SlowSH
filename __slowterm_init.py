@@ -19,5 +19,6 @@ while True:
                 shell.stdin.flush()
                 f.write(shell.stdout.readline().strip())
             os.system("git pull && git add . && git commit -m output && git push")
+            old_bash = new_bash
 
     time.sleep(1)
