@@ -5,11 +5,11 @@ import time
 first_time = True
 
 while True:
+    subprocess.run("git pull", shell=True, text=True, capture_output=True)
+
     if not first_time:
         os.system("cat std.out")
         print('\n')
-
-    subprocess.run("git pull", shell=True, text=True, capture_output=True)
 
     with open("run.bash", 'w') as f:
         f.write(input("<slow>> ").strip())
